@@ -1,0 +1,46 @@
+{
+  "episode_overrides": {
+    "https://bang-dream.com/news/739/": {
+      "episode": 1,
+      "broadcast_at": "2020-01-23T21:30:00+09:00",
+      "note": "現行 TV LIVE 2020 系列初回；官方標題未標示回數。"
+    },
+    "https://bang-dream.com/news/1010/": {
+      "episode": 31,
+      "note": "官方標題重複標為第30回；依 2020-09-03 播出日及前後回次修正。"
+    },
+    "https://bang-dream.com/news/1606/": {
+      "episode": 171,
+      "broadcast_at": "2023-06-08T22:00:00+09:00",
+      "note": "官方日期誤植為「2023年6日8日」，依公告與官方 X 修正。"
+    },
+    "https://bang-dream.com/news/1612/": {
+      "episode": 172,
+      "broadcast_at": "2023-06-15T22:00:00+09:00",
+      "note": "官方日期誤植為「2023年6日15日」，依公告與相鄰回次修正。"
+    },
+    "https://bang-dream.com/news/1617/": {
+      "episode": 173,
+      "broadcast_at": "2023-06-22T22:00:00+09:00",
+      "note": "官方日期誤植為「2023年6日22日」，依公告與相鄰回次修正。"
+    }
+  },
+  "appearance_overrides": {},
+  "person_aliases": {
+    "日笠陽子(宇田川巴)": "日笠陽子",
+    "三村厚史監督": "三村厚史"
+  },
+  "person_roles": {
+    "夢限大みゅーたいぷ": [
+      "夢限大みゅーたいぷ"
+    ]
+  },
+  "person_kinds": {
+    "仲町あられ": "voice_actor",
+    "千石ユノ": "voice_actor",
+    "夢限大みゅーたいぷ": "voice_actor",
+    "宮永ののか": "voice_actor",
+    "峰月律": "voice_actor",
+    "藤都子": "voice_actor"
+  }
+}

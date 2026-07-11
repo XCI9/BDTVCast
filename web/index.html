@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="BanG Dream! TV LIVE 歷回出演名單與聲優上次出場統計"
+    />
+    <title>BanG Dream! TV LIVE 出演統計</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__glow hero__glow--one"></div>
+      <div class="hero__glow hero__glow--two"></div>
+      <div class="shell hero__inner">
+        <p class="eyebrow">BAN G DREAM! TV LIVE · 2020—</p>
+        <h1>誰有一陣子<br />沒上節目了？</h1>
+        <p class="hero__copy">
+          歷回出演紀錄、上次出場與完整時間軸。資料取自 BanG Dream! 官方公告。
+        </p>
+        <div id="summaryCards" class="summary-grid" aria-label="資料摘要"></div>
+      </div>
+    </header>
+
+    <main class="shell main-grid">
+      <div class="filter-widget">
+        <button id="filterToggle" class="filter-trigger" type="button" aria-expanded="false" aria-controls="filterPanel" title="篩選統計">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 5h16l-6.2 7.1v5.2l-3.6 1.9v-7.1L4 5z" />
+          </svg>
+          <span id="resultCount" class="result-count"></span>
+        </button>
+        <div id="filterPanel" class="filter-popover" hidden>
+          <div>
+            <p class="section-kicker">FILTERS</p>
+            <h2 id="filtersTitle">篩選統計</h2>
+          </div>
+          <div class="controls">
+            <label class="field field--search">
+              <span>搜尋姓名或角色</span>
+              <input id="searchInput" type="search" placeholder="例如：愛美、戶山香澄" />
+            </label>
+            <label class="field">
+              <span>人員範圍</span>
+              <select id="kindSelect">
+                <option value="voice_actor">聲優</option>
+                <option value="all">所有出演者</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <section class="panel panel--upcoming" aria-labelledby="upcomingTitle">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">UP NEXT</p>
+            <h2 id="upcomingTitle">尚未播出的預定出演</h2>
+          </div>
+          <button class="section-toggle" data-panel-toggle type="button" aria-expanded="true" title="收合">
+            <span aria-hidden="true">−</span>
+          </button>
+        </div>
+        <div class="panel-body">
+          <div id="upcomingList" class="upcoming-list"></div>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="timelineTitle">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">FULL HISTORY</p>
+            <h2 id="timelineTitle">全員出演時間軸</h2>
+          </div>
+          <div class="section-actions section-actions--timeline">
+            <label class="field field--compact">
+              <span>排序</span>
+              <select id="timelineSortSelect">
+                <option value="days">距今</option>
+                <option value="group">團別</option>
+                <option value="count">次數</option>
+              </select>
+            </label>
+            <button id="timelineDirection" class="sort-direction" type="button" title="切換排序方向">↓</button>
+            <button class="section-toggle" data-panel-toggle type="button" aria-expanded="true" title="收合">
+              <span aria-hidden="true">−</span>
+            </button>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div id="fullTimeline" class="full-timeline"></div>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="tableTitle">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">DIRECTORY</p>
+            <h2 id="tableTitle">聲優一覽</h2>
+          </div>
+          <div class="section-actions">
+            <p class="section-note">點選姓名查看歷次出演</p>
+            <button class="section-toggle" data-panel-toggle type="button" aria-expanded="true" title="收合">
+              <span aria-hidden="true">−</span>
+            </button>
+          </div>
+        </div>
+        <div class="panel-body table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th><button class="sort-button" data-table-sort="group" type="button">姓名／團別 <span data-sort-indicator="group"></span></button></th>
+                <th>上次出場</th>
+                <th><button class="sort-button" data-table-sort="days" type="button">距今 <span data-sort-indicator="days"></span></button></th>
+                <th><button class="sort-button" data-table-sort="count" type="button">累計 <span data-sort-indicator="count"></span></button></th>
+              </tr>
+            </thead>
+            <tbody id="peopleTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="episodesTitle">
+        <div class="section-heading section-heading--episodes">
+          <div>
+            <p class="section-kicker">EPISODES</p>
+            <h2 id="episodesTitle">逐回名單</h2>
+          </div>
+          <div class="episode-picker">
+            <button id="episodePrev" class="nav-button" type="button" title="上一回">&lt;</button>
+            <label class="field field--episode">
+              <span>選擇回數</span>
+              <select id="episodeSelect"></select>
+            </label>
+            <button id="episodeNext" class="nav-button" type="button" title="下一回">&gt;</button>
+          </div>
+          <button class="section-toggle" data-panel-toggle type="button" aria-expanded="true" title="收合">
+            <span aria-hidden="true">−</span>
+          </button>
+        </div>
+        <div class="panel-body">
+          <div id="episodeDetail" class="episode-detail"></div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p id="dataProvenance"></p>
+        <p>本頁為非官方統計工具。角色及節目名稱之權利屬原權利人所有。</p>
+      </footer>
+    </main>
+
+    <dialog id="personDialog" class="person-dialog">
+      <button id="closeDialog" class="dialog-close" type="button" aria-label="關閉">×</button>
+      <div id="personDetail"></div>
+    </dialog>
+
+    <div id="fatalError" class="fatal-error" hidden></div>
+    <noscript>這個儀表板需要 JavaScript 才能顯示互動統計。</noscript>
+    <script src="data.js"></script>
+    <script src="dashboard-core.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
