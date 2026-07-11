@@ -1,14 +1,14 @@
 {
   "metadata": {
-    "generated_at": "2026-07-11T23:26:59+00:00",
+    "generated_at": "2026-07-11T23:45:46+00:00",
     "source": "https://bang-dream.com",
     "search_url": "https://bang-dream.com/news/?s=%E3%83%90%E3%83%B3%E3%83%89%E3%83%AA%EF%BC%81TV+LIVE",
     "series": "BanG Dream! TV LIVE 2020–",
     "timezone": "Asia/Tokyo",
     "latest_episode": 323,
     "episode_count": 323,
-    "appearance_count": 1112,
-    "people_count": 57
+    "appearance_count": 1116,
+    "people_count": 56
   },
   "episodes": [
     {
@@ -18686,18 +18686,74 @@
       "person_id": "person_05ad75753e72"
     },
     {
-      "name": "夢限大みゅーたいぷ",
-      "display_name": "夢限大みゅーたいぷ",
+      "name": "仲町あられ",
+      "display_name": "仲町あられ",
       "role": null,
       "description": null,
       "appearance_type": "regular",
       "status": "appeared",
-      "raw_listed_text": "夢限大みゅーたいぷ",
+      "raw_listed_text": "夢限大みゅーたいぷ（團名展開: 夢限大みゅーたいぷ）",
       "episode": 321,
       "broadcast_at": "2026-07-02T22:03:00+09:00",
       "announcement_url": "https://bang-dream.com/news/2356/",
-      "id": "appearance_00125103dc69",
-      "person_id": "person_2e7b2fee178f"
+      "id": "appearance_3f906cc85dbc",
+      "person_id": "person_7a3d2a41e9e8"
+    },
+    {
+      "name": "千石ユノ",
+      "display_name": "千石ユノ",
+      "role": null,
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "夢限大みゅーたいぷ（團名展開: 夢限大みゅーたいぷ）",
+      "episode": 321,
+      "broadcast_at": "2026-07-02T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2356/",
+      "id": "appearance_389ab71ff8ec",
+      "person_id": "person_42333760d596"
+    },
+    {
+      "name": "宮永ののか",
+      "display_name": "宮永ののか",
+      "role": null,
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "夢限大みゅーたいぷ（團名展開: 夢限大みゅーたいぷ）",
+      "episode": 321,
+      "broadcast_at": "2026-07-02T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2356/",
+      "id": "appearance_7e064ee0f629",
+      "person_id": "person_38743ce74e28"
+    },
+    {
+      "name": "峰月律",
+      "display_name": "峰月律",
+      "role": null,
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "夢限大みゅーたいぷ（團名展開: 夢限大みゅーたいぷ）",
+      "episode": 321,
+      "broadcast_at": "2026-07-02T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2356/",
+      "id": "appearance_d37bbc45b41c",
+      "person_id": "person_2b26af5e4294"
+    },
+    {
+      "name": "藤都子",
+      "display_name": "藤都子",
+      "role": null,
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "夢限大みゅーたいぷ（團名展開: 夢限大みゅーたいぷ）",
+      "episode": 321,
+      "broadcast_at": "2026-07-02T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2356/",
+      "id": "appearance_34c98795b990",
+      "person_id": "person_e02a20578f1e"
     },
     {
       "name": "三澤紗千香",
@@ -19014,16 +19070,6 @@
       "kind": "voice_actor",
       "roles": [
         "マスキング"
-      ],
-      "descriptions": []
-    },
-    {
-      "id": "person_2e7b2fee178f",
-      "name": "夢限大みゅーたいぷ",
-      "display_name": "夢限大みゅーたいぷ",
-      "kind": "voice_actor",
-      "roles": [
-        "夢限大みゅーたいぷ"
       ],
       "descriptions": []
     },

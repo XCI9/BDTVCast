@@ -165,9 +165,16 @@ def load_corrections() -> dict[str, Any]:
     data.setdefault("appearance_overrides", {})
     data.setdefault("person_aliases", {})
     data.setdefault("person_roles", {})
+    data.setdefault("group_appearances", {})
     data.setdefault("person_kinds", {})
     data["episode_overrides"] = {
         canonical_url(url): value for url, value in data["episode_overrides"].items()
+    }
+    data["group_appearances"] = {
+        canonical_name(group, data["person_aliases"]): [
+            canonical_name(member, data["person_aliases"]) for member in members
+        ]
+        for group, members in data["group_appearances"].items()
     }
     return data
 
@@ -521,6 +528,30 @@ def apply_appearance_overrides(
     return appearances
 
 
+def expand_group_appearances(
+    appearances: list[dict[str, Any]], corrections: dict[str, Any]
+) -> list[dict[str, Any]]:
+    group_map = corrections.get("group_appearances", {})
+    expanded: list[dict[str, Any]] = []
+    for item in appearances:
+        members = group_map.get(item["name"])
+        if not members:
+            expanded.append(item)
+            continue
+        for member in members:
+            expanded.append(
+                {
+                    **item,
+                    "name": member,
+                    "display_name": member,
+                    "role": None,
+                    "description": None,
+                    "raw_listed_text": f"{item['raw_listed_text']}（團名展開: {item['name']}）",
+                }
+            )
+    return expanded
+
+
 def parse_episode(
     candidate: Candidate, html: str, corrections: dict[str, Any]
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
@@ -571,6 +602,7 @@ def parse_episode(
             )
 
     appearances = apply_appearance_overrides(candidate.url, appearances, corrections)
+    appearances = expand_group_appearances(appearances, corrections)
     unique: dict[tuple[str, str, str], dict[str, Any]] = {}
     for item in appearances:
         key = (item["name"], item["appearance_type"], item["status"])

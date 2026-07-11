@@ -6,6 +6,7 @@
   const $ = (selector) => document.querySelector(selector);
   const collator = new Intl.Collator(["ja", "zh-Hant"], { sensitivity: "base" });
   const peopleMap = new Map((data?.people || []).map((person) => [person.id, person]));
+  let setEpisodeByNumber = null;
   const state = {
     query: "",
     kind: "voice_actor",
@@ -94,7 +95,6 @@
   const personGroups = new Map(Object.entries({
     "仲町あられ": "夢限大みゅーたいぷ",
     "千石ユノ": "夢限大みゅーたいぷ",
-    "夢限大みゅーたいぷ": "夢限大みゅーたいぷ",
     "宮永ののか": "夢限大みゅーたいぷ",
     "峰月律": "夢限大みゅーたいぷ",
     "藤都子": "夢限大みゅーたいぷ",
@@ -142,6 +142,14 @@
     return value ? `<${tag} class="${className}">${escapeHtml(value)}</${tag}>` : "";
   }
 
+  function episodeButton(episodeNumber, label) {
+    return `<button class="episode-link-button" data-episode-nav="${Number(episodeNumber)}" type="button">${escapeHtml(label || `第 ${episodeNumber} 回`)}</button>`;
+  }
+
+  function episodeTitle(episodeNumber) {
+    return `第 ${Number(episodeNumber)} 回`;
+  }
+
   function personButton(person, extraClass) {
     const className = ["person-button", extraClass].filter(Boolean).join(" ");
     return `<button class="${className}" data-person-id="${escapeHtml(person.id)}" type="button">${escapeHtml(person.display_name)}</button>`;
@@ -174,13 +182,13 @@
     const completed = core.completedEpisodes(data, now);
     const latest = completed[0];
     const cards = [
-      ["最近已播出", latest ? `第 ${latest.episode} 回` : "—", latest ? formatDate(latest.broadcast_at) : ""],
+      ["最近已播出", latest ? episodeButton(latest.episode) : "—", latest ? formatDate(latest.broadcast_at) : ""],
       ["資料更新", formatDate(data.metadata.generated_at, true), "官方網站公告"],
     ];
     $("#summaryCards").innerHTML = cards.map(([label, value, sub]) => `
       <div class="summary-card">
         <span class="summary-card__label">${escapeHtml(label)}</span>
-        <strong class="summary-card__value">${escapeHtml(value)}</strong>
+        <strong class="summary-card__value">${value}</strong>
         <span class="summary-card__sub">${escapeHtml(sub)}</span>
       </div>`).join("");
   }
@@ -203,6 +211,24 @@
       });
     }
     return markers;
+  }
+
+  function timelineItemsForRow(row, now) {
+    const current = now.getTime();
+    const futureItems = data.appearances
+      .filter((item) =>
+        item.person_id === row.person.id &&
+        item.status !== "cancelled" &&
+        new Date(item.broadcast_at).getTime() > current
+      )
+      .map((item) => ({ ...item, isUpcoming: true }));
+    return [
+      ...row.history.map((item) => ({ ...item, isUpcoming: false })),
+      ...futureItems,
+    ].sort((a, b) =>
+      new Date(a.broadcast_at).getTime() - new Date(b.broadcast_at).getTime() ||
+      Number(a.episode) - Number(b.episode)
+    );
   }
 
   function compareNumberRows(a, b, selector, dir) {
@@ -249,7 +275,7 @@
     $("#peopleTable").innerHTML = sortedRows.map((row) => `
       <tr>
         <td>${personButton(row.person)}<span class="group-label">${escapeHtml(groupForPerson(row.person))}</span>${optionalText("span", "roles", personLabels(row.person))}</td>
-        <td>${row.last ? `<span class="date-main">${formatDate(row.last.broadcast_at)}</span><span class="date-sub">第 ${row.last.episode} 回 · ${escapeHtml(typeLabels[row.last.appearance_type] || row.last.appearance_type)}</span>` : "—"}</td>
+        <td>${row.last ? `<span class="date-main">${formatDate(row.last.broadcast_at)}</span><span class="date-sub">${episodeButton(row.last.episode)} · ${escapeHtml(typeLabels[row.last.appearance_type] || row.last.appearance_type)}</span>` : "—"}</td>
         <td>${row.daysSince === null ? "—" : `<span class="days-pill">${row.daysSince} 天</span>`}</td>
         <td>${row.count} 回</td>
       </tr>`).join("");
@@ -257,10 +283,12 @@
 
   function renderTimeline(rows) {
     const sortedRows = sortRows(rows, state.timelineSort);
+    const now = new Date();
     const allDates = data.episodes.map((episode) => new Date(episode.broadcast_at).getTime());
     const min = Math.min(...allDates);
-    const max = Math.max(Date.now(), ...allDates);
+    const max = Math.max(now.getTime(), ...allDates);
     const markers = yearMarkers(min, max);
+    const timelineItems = new Map(sortedRows.map((row) => [row.person.id, timelineItemsForRow(row, now)]));
     $("#fullTimeline").innerHTML = sortedRows.length ? sortedRows.map((row) => `
       <div class="timeline-row">
         <div class="plot-name timeline-name">
@@ -269,16 +297,16 @@
         </div>
         <div class="timeline-dots">
           ${markers.map((marker) => `<span class="timeline-year-line" style="left:${marker.position}%" title="${marker.year}"></span>`).join("")}
-          ${row.history.map((item) => {
+          ${(timelineItems.get(row.person.id) || []).map((item) => {
             const pos = positionPercent(item.broadcast_at, min, max);
-            const tooltip = `第 ${item.episode} 回`;
-            const title = `${tooltip} · ${formatDate(item.broadcast_at)}`;
+            const label = `${episodeTitle(item.episode)} · ${formatDate(item.broadcast_at)}`;
             const lastClass = row.last && item.id === row.last.id ? " timeline-dot--last" : "";
-            return `<span class="timeline-dot${lastClass}" style="left:${pos}%" title="${escapeHtml(title)}" data-tooltip="${escapeHtml(tooltip)}" aria-label="${escapeHtml(title)}" tabindex="0"></span>`;
+            const upcomingClass = item.isUpcoming ? " timeline-dot--upcoming" : "";
+            return `<button class="timeline-dot${lastClass}${upcomingClass}" data-episode-nav="${Number(item.episode)}" data-tooltip="${escapeHtml(label)}" style="left:${pos}%" aria-label="${escapeHtml(label)}" type="button"></button>`;
           }).join("")}
         </div>
         <div class="timeline-last">
-          ${row.last ? `<strong>${row.daysSince} 天</strong><span>第 ${row.last.episode} 回</span>` : "<span>尚無紀錄</span>"}
+          ${row.last ? `<strong>${row.daysSince} 天</strong><span>${episodeButton(row.last.episode)}</span>` : "<span>尚無紀錄</span>"}
         </div>
       </div>`).join("") : `<div class="empty-state">沒有可顯示的時間軸。</div>`;
   }
@@ -291,7 +319,7 @@
         <div class="cast-layout cast-layout--upcoming">
           ${episodeImage(episode, "episode-image episode-image--upcoming")}
           <div class="cast-layout__content">
-            <h3>第 ${episode.episode} 回</h3>
+            <h3>${episodeButton(episode.episode)}</h3>
             <p class="upcoming-card__date">${formatDate(episode.broadcast_at, true)}</p>
             <div class="chip-list">${people.map((item) => `<span class="chip">${appearancePersonButton(item)}</span>`).join("")}</div>
           </div>
@@ -306,7 +334,7 @@
     const appearances = core.appearancesForEpisode(data, episode.episode);
     $("#episodeDetail").innerHTML = `
       <div class="episode-meta">
-        <h3>第 ${episode.episode} 回</h3>
+        <h3>${escapeHtml(episodeTitle(episode.episode))}</h3>
         <p>${formatDate(episode.broadcast_at, true)}</p>
       </div>
       ${episode.correction_note ? `<p class="section-note">資料修正：${escapeHtml(episode.correction_note)}</p>` : ""}
@@ -346,6 +374,7 @@
       renderEpisode(value);
       updateEpisodeNav();
     };
+    setEpisodeByNumber = setEpisode;
     select.value = String(completed[0]?.episode || data.metadata.latest_episode);
     renderEpisode(select.value);
     updateEpisodeNav();
@@ -367,8 +396,8 @@
       <p class="person-detail__roles">${escapeHtml(groupForPerson(person))}${labels ? ` · ${escapeHtml(labels)}` : ""}</p>
       <div class="history-list">
         ${history.map((item) => `<div class="history-item">
-          <div><div class="history-item__episode">第 ${item.episode} 回</div><div class="history-item__date">${formatDate(item.broadcast_at)}</div></div>
-          ${optionalText("div", "history-item__role", item.role || item.description)}
+          <div class="history-item__episode">${episodeButton(item.episode)}</div>
+          <div class="history-item__date">${formatDate(item.broadcast_at)}</div>
           ${typeBadge(item)}
         </div>`).join("")}
       </div>
@@ -452,6 +481,13 @@
       refresh();
     });
     document.addEventListener("click", (event) => {
+      const episodeButtonNode = event.target.closest("[data-episode-nav]");
+      if (episodeButtonNode) {
+        setEpisodeByNumber?.(Number(episodeButtonNode.dataset.episodeNav));
+        if ($("#personDialog")?.open) $("#personDialog").close();
+        $("#episodesTitle").scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
       const button = event.target.closest("[data-person-id]");
       if (button) showPerson(button.dataset.personId);
     });

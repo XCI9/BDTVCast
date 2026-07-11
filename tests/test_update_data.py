@@ -16,6 +16,7 @@ def corrections():
         "appearance_overrides": {},
         "person_aliases": {},
         "person_roles": {},
+        "group_appearances": {},
         "person_kinds": {},
     }
 
@@ -121,6 +122,30 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(episode["broadcast_at"], "2020-01-23T21:30:00+09:00")
         self.assertEqual(appearances[0]["name"], "伊藤彩沙")
 
+    def test_group_appearance_expands_to_members(self):
+        html = html_page(
+            """
+            <h2>日時</h2><p>2026年7月2日(木)22:03～</p>
+            <h2>出演</h2><p>夢限大みゅーたいぷ</p>
+            """
+        )
+        config = corrections()
+        config["group_appearances"]["夢限大みゅーたいぷ"] = [
+            "仲町あられ",
+            "千石ユノ",
+            "宮永ののか",
+            "峰月律",
+            "藤都子",
+        ]
+        candidate = Candidate(
+            "https://bang-dream.com/news/2356/", "第321回", "2026-06-26", 321
+        )
+        _, appearances = parse_episode(candidate, html, config)
+        self.assertEqual(
+            {item["name"] for item in appearances},
+            {"仲町あられ", "千石ユノ", "宮永ののか", "峰月律", "藤都子"},
+        )
+
 
 class DatasetTests(unittest.TestCase):
     def test_validation_accepts_contiguous_data_and_people_classification(self):
@@ -174,22 +199,6 @@ class DatasetTests(unittest.TestCase):
         config["person_kinds"]["千石ユノ"] = "voice_actor"
         people = build_people(appearances, config)
         self.assertEqual(people[0]["kind"], "voice_actor")
-
-    def test_person_role_overrides_fill_display_label(self):
-        appearances = [
-            {
-                "episode": 1,
-                "name": "夢限大みゅーたいぷ",
-                "display_name": "夢限大みゅーたいぷ",
-                "role": None,
-                "appearance_type": "regular",
-                "status": "appeared",
-            }
-        ]
-        config = corrections()
-        config["person_roles"]["夢限大みゅーたいぷ"] = ["夢限大みゅーたいぷ"]
-        people = build_people(appearances, config)
-        self.assertEqual(people[0]["roles"], ["夢限大みゅーたいぷ"])
 
     def test_validation_rejects_missing_episode(self):
         episodes = [

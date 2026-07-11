@@ -30,15 +30,18 @@
     "日笠陽子(宇田川巴)": "日笠陽子",
     "三村厚史監督": "三村厚史"
   },
-  "person_roles": {
+  "group_appearances": {
     "夢限大みゅーたいぷ": [
-      "夢限大みゅーたいぷ"
+      "仲町あられ",
+      "千石ユノ",
+      "宮永ののか",
+      "峰月律",
+      "藤都子"
     ]
   },
   "person_kinds": {
     "仲町あられ": "voice_actor",
     "千石ユノ": "voice_actor",
-    "夢限大みゅーたいぷ": "voice_actor",
     "宮永ののか": "voice_actor",
     "峰月律": "voice_actor",
     "藤都子": "voice_actor"
