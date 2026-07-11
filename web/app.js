@@ -157,6 +157,11 @@
     return personButton(person, extraClass);
   }
 
+  function episodeImage(episode, className) {
+    if (!episode.image_url) return "";
+    return `<img class="${className}" src="${escapeHtml(episode.image_url)}" alt="第 ${episode.episode} 回出演者圖片" loading="lazy" referrerpolicy="no-referrer" />`;
+  }
+
   function typeBadge(item) {
     const cancelled = item.status === "cancelled";
     const label = cancelled ? "取消出演" : (typeLabels[item.appearance_type] || item.appearance_type);
@@ -283,9 +288,14 @@
     $("#upcomingList").innerHTML = episodes.length ? episodes.map((episode) => {
       const people = core.appearancesForEpisode(data, episode.episode).filter((item) => item.status !== "cancelled");
       return `<article class="upcoming-card">
-        <h3>第 ${episode.episode} 回</h3>
-        <p class="upcoming-card__date">${formatDate(episode.broadcast_at, true)}</p>
-        <div class="chip-list">${people.map((item) => `<span class="chip">${appearancePersonButton(item)}</span>`).join("")}</div>
+        <div class="cast-layout cast-layout--upcoming">
+          ${episodeImage(episode, "episode-image episode-image--upcoming")}
+          <div class="cast-layout__content">
+            <h3>第 ${episode.episode} 回</h3>
+            <p class="upcoming-card__date">${formatDate(episode.broadcast_at, true)}</p>
+            <div class="chip-list">${people.map((item) => `<span class="chip">${appearancePersonButton(item)}</span>`).join("")}</div>
+          </div>
+        </div>
       </article>`;
     }).join("") : `<div class="empty-state">目前沒有尚未播出的公告。</div>`;
   }
@@ -304,12 +314,15 @@
         <a class="link-button" href="${escapeHtml(episode.announcement_url)}" target="_blank" rel="noreferrer">官方公告 ↗</a>
         ${episode.youtube_url ? `<a class="link-button" href="${escapeHtml(episode.youtube_url)}" target="_blank" rel="noreferrer">YouTube ↗</a>` : ""}
       </div>
-      <div class="appearance-list">
-        ${appearances.map((item) => `<div class="appearance-item${item.status === "cancelled" ? " appearance-item--cancelled" : ""}">
-          <span class="appearance-item__name">${appearancePersonButton(item)}</span>
-          ${optionalText("span", "appearance-item__role", item.role || item.description)}
-          ${typeBadge(item)}
-        </div>`).join("")}
+      <div class="cast-layout cast-layout--detail">
+        ${episodeImage(episode, "episode-image episode-image--detail")}
+        <div class="appearance-list">
+          ${appearances.map((item) => `<div class="appearance-item${item.status === "cancelled" ? " appearance-item--cancelled" : ""}">
+            <span class="appearance-item__name">${appearancePersonButton(item)}</span>
+            ${optionalText("span", "appearance-item__role", item.role || item.description)}
+            ${typeBadge(item)}
+          </div>`).join("")}
+        </div>
       </div>`;
   }
 

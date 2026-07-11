@@ -480,6 +480,20 @@ def find_youtube_url(main: Tag) -> str | None:
     return links[0] if links else None
 
 
+def find_episode_image_url(main: Tag) -> str | None:
+    for image in main.select("img"):
+        src = normalize_text(
+            image.get("src")
+            or image.get("data-src")
+            or image.get("data-lazy-src")
+            or ""
+        )
+        if not src or src.startswith("data:"):
+            continue
+        return urljoin(BASE_URL, src)
+    return None
+
+
 def apply_appearance_overrides(
     url: str, appearances: list[dict[str, Any]], corrections: dict[str, Any]
 ) -> list[dict[str, Any]]:
@@ -570,6 +584,7 @@ def parse_episode(
         "news_date": candidate.news_date,
         "announcement_url": candidate.url,
         "youtube_url": find_youtube_url(main),
+        "image_url": find_episode_image_url(main),
         "correction_note": override.get("note"),
     }
     return episode, appearances

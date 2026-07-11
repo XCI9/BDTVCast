@@ -35,6 +35,7 @@ class ParserTests(unittest.TestCase):
             <h2>出演</h2><p>愛美（戸山香澄 役）、mika（二葉つくし 役）<br>ゲスト出演：湯田雅（ガルパプロデューサー）</p>
             <h2>ゲスト出演</h2><p>千石ユノ</p>
             <h2>VTR出演</h2><p>西本りみ（牛込りみ 役）</p>
+            <p><img src="/wordpress/wp-content/uploads/example-cast.png" alt=""></p>
             <h2>配信URL</h2><p><a href="https://youtube.com/live/example">YouTube Live</a></p>
             """
         )
@@ -45,6 +46,10 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(episode["episode"], 323)
         self.assertEqual(episode["broadcast_at"], "2026-07-16T22:03:00+09:00")
         self.assertEqual(episode["youtube_url"], "https://youtube.com/live/example")
+        self.assertEqual(
+            episode["image_url"],
+            "https://bang-dream.com/wordpress/wp-content/uploads/example-cast.png",
+        )
         self.assertEqual(
             {(item["name"], item["appearance_type"]) for item in appearances},
             {
