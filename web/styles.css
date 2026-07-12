@@ -198,6 +198,8 @@ a { color: var(--pink-dark); text-underline-offset: 3px; }
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.band-label { color: var(--label-color, var(--muted)); font-weight: 850; }
+.timeline-meta .band-label { display: inline; }
 .table-wrap { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: 15px 12px; border-bottom: 1px solid #e9e4dc; text-align: left; vertical-align: middle; }
@@ -210,6 +212,9 @@ td { font-size: .88rem; }
 .episode-link-button { padding: 0; color: inherit; border: 0; background: none; cursor: pointer; font: inherit; font-weight: 850; text-align: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .episode-link-button:hover { color: var(--pink-dark); }
 .roles { display: block; max-width: 390px; margin-top: 3px; color: var(--muted); font-size: .72rem; }
+.character-label { color: inherit; font-weight: 850; }
+.character-label--colored { color: var(--label-color); text-shadow: 0 1px 0 rgba(23, 21, 35, .14); }
+.label-separator { color: var(--muted); opacity: .8; }
 .date-main { font-weight: 750; }
 .date-sub { display: block; color: var(--muted); font-size: .72rem; }
 .days-pill { display: inline-flex; padding: 4px 9px; border-radius: 999px; background: #f2e9ed; color: var(--pink-dark); font-size: .76rem; font-weight: 800; }
@@ -306,6 +311,7 @@ td { font-size: .88rem; }
 .person-detail { padding: 36px; }
 .person-detail h2 { margin: 0; font-size: 2.2rem; }
 .person-detail__roles { margin: 4px 0 26px; color: var(--muted); }
+.person-detail__character-roles { color: var(--muted); }
 .history-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); gap: 9px; }
 .history-item { display: grid; align-content: start; gap: 7px; min-height: 112px; padding: 13px; border: 1px solid #e8e2da; border-radius: 12px; background: #fffdf9; }
 .history-item__episode { font-weight: 850; }

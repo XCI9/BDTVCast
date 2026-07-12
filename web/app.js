@@ -100,6 +100,79 @@
     "藤都子": "夢限大みゅーたいぷ",
   }));
 
+  const bandColors = new Map(Object.entries({
+    "Poppin'Party": "#FF3B72",
+    Afterglow: "#EE0022",
+    "Pastel*Palettes": "#FF88BB",
+    Roselia: "#3344AA",
+    "Hello, Happy World!": "#FFDD00",
+    Morfonica: "#00ABFF",
+    "RAISE A SUILEN": "#39C9C5",
+    "MyGO!!!!!": "#0B88BB",
+    "Ave Mujica": "#881144",
+    "夢限大みゅーたいぷ": "#FF7788",
+  }));
+
+  const characterColors = new Map(Object.entries({
+    戸山香澄: "#FF5522",
+    户山香澄: "#FF5522",
+    花園たえ: "#0077DD",
+    牛込りみ: "#FF55BB",
+    山吹沙綾: "#FFCC11",
+    "市ヶ谷有咲": "#AA66DD",
+    美竹蘭: "#EE0022",
+    青葉モカ: "#00CCAA",
+    上原ひまり: "#FF9999",
+    宇田川巴: "#BB0033",
+    羽沢つぐみ: "#FFEE88",
+    丸山彩: "#FF88BB",
+    氷川日菜: "#55DDEE",
+    白鷺千聖: "#FFEEAA",
+    大和麻弥: "#99DD88",
+    若宮イヴ: "#DDBBFF",
+    湊友希那: "#881188",
+    氷川紗夜: "#00AABB",
+    今井リサ: "#DD2200",
+    宇田川あこ: "#DD0088",
+    白金燐子: "#BBBBBB",
+    弦巻こころ: "#FFEE22",
+    瀬田薫: "#AA33CC",
+    北沢はぐみ: "#FF9922",
+    松原花音: "#44DDFF",
+    ミッシェル: "#006699",
+    奥沢美咲: "#006699",
+    倉田ましろ: "#6677CC",
+    "桐ヶ谷透子": "#EE6666",
+    広町七深: "#EE7744",
+    二葉つくし: "#EE7788",
+    八潮瑠唯: "#669988",
+    レイヤ: "#CC0000",
+    和奏レイ: "#CC0000",
+    ロック: "#AAEE22",
+    朝日六花: "#AAEE22",
+    マスキング: "#EEBB44",
+    佐藤ますき: "#EEBB44",
+    パレオ: "#FF99BB",
+    鳰原令王那: "#FF99BB",
+    チュチュ: "#00BBFF",
+    珠手ちゆ: "#00BBFF",
+    高松燈: "#77BBDD",
+    千早愛音: "#FF8899",
+    要楽奈: "#77DD77",
+    長崎そよ: "#FFDD88",
+    椎名立希: "#7777AA",
+    三角初華: "#BB9955",
+    ドロリス: "#BB9955",
+    若葉睦: "#779977",
+    モーティス: "#779977",
+    八幡海鈴: "#335566",
+    ティモリス: "#335566",
+    祐天寺にゃむ: "#AA4477",
+    アモーリス: "#AA4477",
+    豊川祥子: "#7799CC",
+    オブリビオニス: "#7799CC",
+  }));
+
   function escapeHtml(value) {
     return String(value ?? "")
       .replaceAll("&", "&amp;")
@@ -117,6 +190,32 @@
 
   function splitRoles(person) {
     return (person.roles || []).flatMap((role) => role.split(/[／/]/)).filter(Boolean);
+  }
+
+  function cssColorVar(color) {
+    return /^#[0-9a-f]{6}$/i.test(color || "") ? ` style="--label-color:${color}"` : "";
+  }
+
+  function colorKey(label) {
+    return String(label || "").replace(/\s+/g, "");
+  }
+
+  function bandLabel(group, extraClass) {
+    const color = bandColors.get(group);
+    const className = ["band-label", extraClass].filter(Boolean).join(" ");
+    return `<span class="${className}"${cssColorVar(color)}>${escapeHtml(group)}</span>`;
+  }
+
+  function characterLabel(label) {
+    const color = characterColors.get(colorKey(label));
+    const className = color ? "character-label character-label--colored" : "character-label";
+    return `<span class="${className}"${cssColorVar(color)}>${escapeHtml(label)}</span>`;
+  }
+
+  function roleLabelsHtml(value, className) {
+    const parts = String(value || "").split(/[／/]/).filter(Boolean);
+    if (!parts.length) return "";
+    return `<span class="${className}">${parts.map(characterLabel).join(`<span class="label-separator">／</span>`)}</span>`;
   }
 
   function groupForPerson(person) {
@@ -274,7 +373,7 @@
     const sortedRows = sortRows(rows, state.tableSort);
     $("#peopleTable").innerHTML = sortedRows.map((row) => `
       <tr>
-        <td>${personButton(row.person)}<span class="group-label">${escapeHtml(groupForPerson(row.person))}</span>${optionalText("span", "roles", personLabels(row.person))}</td>
+        <td>${personButton(row.person)}${bandLabel(groupForPerson(row.person), "group-label")}${roleLabelsHtml(personLabels(row.person), "roles")}</td>
         <td>${row.last ? `<span class="date-main">${formatDate(row.last.broadcast_at)}</span><span class="date-sub">${episodeButton(row.last.episode)} · ${escapeHtml(typeLabels[row.last.appearance_type] || row.last.appearance_type)}</span>` : "—"}</td>
         <td>${row.daysSince === null ? "—" : `<span class="days-pill">${row.daysSince} 天</span>`}</td>
         <td>${row.count} 回</td>
@@ -293,7 +392,7 @@
       <div class="timeline-row">
         <div class="plot-name timeline-name">
           ${personButton(row.person)}
-          <span class="timeline-meta">${escapeHtml(groupForPerson(row.person))} · ${row.count} 回</span>
+          <span class="timeline-meta">${bandLabel(groupForPerson(row.person))} · ${row.count} 回</span>
         </div>
         <div class="timeline-dots">
           ${markers.map((marker) => `<span class="timeline-year-line" style="left:${marker.position}%" title="${marker.year}"></span>`).join("")}
@@ -347,7 +446,7 @@
         <div class="appearance-list">
           ${appearances.map((item) => `<div class="appearance-item${item.status === "cancelled" ? " appearance-item--cancelled" : ""}">
             <span class="appearance-item__name">${appearancePersonButton(item)}</span>
-            ${optionalText("span", "appearance-item__role", item.role || item.description)}
+            ${roleLabelsHtml(item.role || item.description, "appearance-item__role")}
             ${typeBadge(item)}
           </div>`).join("")}
         </div>
@@ -393,7 +492,7 @@
     $("#personDetail").innerHTML = `<div class="person-detail">
       <p class="section-kicker">APPEARANCE HISTORY</p>
       <h2>${escapeHtml(person.display_name)}</h2>
-      <p class="person-detail__roles">${escapeHtml(groupForPerson(person))}${labels ? ` · ${escapeHtml(labels)}` : ""}</p>
+      <p class="person-detail__roles">${bandLabel(groupForPerson(person))}${labels ? ` · ${roleLabelsHtml(labels, "person-detail__character-roles")}` : ""}</p>
       <div class="history-list">
         ${history.map((item) => `<div class="history-item">
           <div class="history-item__episode">${episodeButton(item.episode)}</div>
