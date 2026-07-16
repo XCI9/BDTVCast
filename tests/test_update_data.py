@@ -5,7 +5,9 @@ from update_data import (
     UpdateError,
     build_people,
     canonical_url,
+    merge_incremental_records,
     parse_episode,
+    select_incremental_candidates,
     validate_dataset,
 )
 
@@ -148,6 +150,57 @@ class ParserTests(unittest.TestCase):
 
 
 class DatasetTests(unittest.TestCase):
+    def test_incremental_selection_refreshes_latest_two_and_all_new_episodes(self):
+        existing = [
+            Candidate(f"https://example/{number}/", f"Episode {number}", "2026-01-01", number)
+            for number in range(1, 4)
+        ]
+        discovered = [
+            Candidate(f"https://example/{number}/", f"Episode {number}", "2026-02-01", number)
+            for number in range(2, 7)
+        ]
+
+        selected = select_incremental_candidates(existing, discovered)
+
+        self.assertEqual([candidate.episode for candidate in selected], [4, 5, 6])
+
+    def test_incremental_selection_refreshes_two_when_there_is_no_new_episode(self):
+        existing = [
+            Candidate(f"https://example/{number}/", f"Episode {number}", "2026-01-01", number)
+            for number in range(1, 5)
+        ]
+
+        selected = select_incremental_candidates(existing, existing[-2:])
+
+        self.assertEqual([candidate.episode for candidate in selected], [3, 4])
+
+    def test_incremental_merge_keeps_old_records_and_replaces_refreshed_episode(self):
+        existing = {
+            "episodes": [
+                {"episode": 1, "title": "old one"},
+                {"episode": 2, "title": "old two"},
+            ],
+            "appearances": [
+                {"episode": 1, "id": "old-1"},
+                {"episode": 2, "id": "old-2"},
+            ],
+        }
+        refreshed_episodes = [
+            {"episode": 2, "title": "new two"},
+            {"episode": 3, "title": "new three"},
+        ]
+        refreshed_appearances = [
+            {"episode": 2, "id": "new-2"},
+            {"episode": 3, "id": "new-3"},
+        ]
+
+        episodes, appearances = merge_incremental_records(
+            existing, refreshed_episodes, refreshed_appearances
+        )
+
+        self.assertEqual([episode["title"] for episode in episodes], ["old one", "new two", "new three"])
+        self.assertEqual([appearance["id"] for appearance in appearances], ["old-1", "new-2", "new-3"])
+
     def test_validation_accepts_contiguous_data_and_people_classification(self):
         episodes = [
             {

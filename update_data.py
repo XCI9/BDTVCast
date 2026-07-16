@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import os
@@ -236,11 +237,30 @@ def candidates_from_search_page(
     return result
 
 
-def discover_candidates(corrections: dict[str, Any]) -> list[Candidate]:
+def discover_candidates(
+    corrections: dict[str, Any], known_urls: set[str] | None = None
+) -> list[Candidate]:
     first_html = fetch(search_page_url(1))
     total_pages = page_count(first_html)
     pages: dict[int, str] = {1: first_html}
-    if total_pages > 1:
+
+    first_candidates = candidates_from_search_page(first_html, corrections)
+    found_known_url = bool(
+        known_urls
+        and any(candidate.url in known_urls for candidate in first_candidates)
+    )
+
+    if known_urls is not None:
+        page = 2
+        while page <= total_pages and not found_known_url:
+            html = fetch(search_page_url(page))
+            pages[page] = html
+            page_candidates = candidates_from_search_page(html, corrections)
+            found_known_url = any(
+                candidate.url in known_urls for candidate in page_candidates
+            )
+            page += 1
+    elif total_pages > 1:
         with ThreadPoolExecutor(max_workers=6) as executor:
             futures = {
                 executor.submit(fetch, search_page_url(page)): page
@@ -257,6 +277,13 @@ def discover_candidates(corrections: dict[str, Any]) -> list[Candidate]:
     candidates = sorted(by_url.values(), key=lambda item: (item.episode, item.url))
     if not candidates:
         raise UpdateError("官方搜尋沒有找到任何 TV LIVE 回次。")
+    if known_urls is not None and not found_known_url:
+        raise UpdateError(
+            "搜尋到最後一頁仍找不到既有公告；"
+            "請用 --full 完整重建資料。"
+        )
+    mode = "增量" if known_urls is not None else "完整"
+    print(f"  {mode}搜尋已掃描 {len(pages)} 頁", flush=True)
     return candidates
 
 
@@ -719,35 +746,72 @@ def atomic_write_text(path: Path, content: str) -> None:
             temp_path.unlink()
 
 
-def write_dataset(dataset: dict[str, Any]) -> None:
-    payload = json.dumps(dataset, ensure_ascii=False, indent=2) + "\n"
-    browser_payload = "window.TV_LIVE_DATA = " + json.dumps(
-        dataset, ensure_ascii=False, separators=(",", ":")
-    ) + ";\n"
-    atomic_write_text(DATA_PATH, payload)
-    atomic_write_text(WEB_DATA_PATH, browser_payload)
+def load_existing_dataset(path: Path = DATA_PATH) -> dict[str, Any] | None:
+    if not path.exists():
+        return None
+    with path.open("r", encoding="utf-8") as handle:
+        dataset = json.load(handle)
+    if not isinstance(dataset, dict):
+        raise UpdateError("既有資料格式錯誤；請用 --full 完整重建。")
+    episodes = dataset.get("episodes")
+    appearances = dataset.get("appearances")
+    if not isinstance(episodes, list) or not isinstance(appearances, list):
+        raise UpdateError("既有資料缺少回次或出演紀錄；請用 --full 完整重建。")
+    validate_dataset(episodes, appearances)
+    return dataset
 
 
-def update() -> dict[str, Any]:
-    corrections = load_corrections()
-    print("搜尋官方 TV LIVE 公告…", flush=True)
-    candidates = discover_candidates(corrections)
-    print(f"找到 {len(candidates)} 個候選公告，下載各回內容…", flush=True)
+def candidates_from_dataset(dataset: dict[str, Any]) -> list[Candidate]:
+    candidates: list[Candidate] = []
+    for episode in dataset["episodes"]:
+        try:
+            candidates.append(
+                Candidate(
+                    url=canonical_url(str(episode["announcement_url"])),
+                    title=str(episode["title"]),
+                    news_date=str(episode["news_date"]),
+                    episode=int(episode["episode"]),
+                )
+            )
+        except (KeyError, TypeError, ValueError) as exc:
+            raise UpdateError(
+                "既有回次資料無法建立增量索引；"
+                "請用 --full 完整重建。"
+            ) from exc
+    return candidates
 
-    parsed: list[tuple[dict[str, Any], list[dict[str, Any]]]] = []
-    with ThreadPoolExecutor(max_workers=8) as executor:
-        futures = {
-            executor.submit(fetch, candidate.url): candidate for candidate in candidates
-        }
-        completed = 0
-        for future in as_completed(futures):
-            candidate = futures[future]
-            html = future.result()
-            parsed.append(parse_episode(candidate, html, corrections))
-            completed += 1
-            if completed % 50 == 0 or completed == len(candidates):
-                print(f"  已解析 {completed}/{len(candidates)} 回", flush=True)
 
+def select_incremental_candidates(
+    existing_candidates: list[Candidate],
+    discovered_candidates: list[Candidate],
+    refresh_count: int = 2,
+) -> list[Candidate]:
+    existing_urls = {candidate.url for candidate in existing_candidates}
+    by_url = {candidate.url: candidate for candidate in existing_candidates}
+    by_url.update({candidate.url: candidate for candidate in discovered_candidates})
+
+    by_episode: dict[int, Candidate] = {}
+    for candidate in by_url.values():
+        previous = by_episode.get(candidate.episode)
+        if previous and previous.url != candidate.url:
+            raise UpdateError(
+                f"第 {candidate.episode} 回同時對應多個公告："
+                f"{previous.url} 、{candidate.url}"
+            )
+        by_episode[candidate.episode] = candidate
+
+    latest_numbers = set(sorted(by_episode)[-refresh_count:])
+    selected = [
+        candidate
+        for candidate in by_episode.values()
+        if candidate.url not in existing_urls or candidate.episode in latest_numbers
+    ]
+    return sorted(selected, key=lambda item: (item.episode, item.url))
+
+
+def parsed_records(
+    parsed: list[tuple[dict[str, Any], list[dict[str, Any]]]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     parsed.sort(key=lambda item: item[0]["episode"])
     episodes = [item[0] for item in parsed]
     appearances: list[dict[str, Any]] = []
@@ -762,6 +826,87 @@ def update() -> dict[str, Any]:
                 f"{appearance['appearance_type']}|{appearance['status']}|{index}",
             )
             appearances.append(appearance)
+    return episodes, appearances
+
+
+def merge_incremental_records(
+    existing_dataset: dict[str, Any] | None,
+    refreshed_episodes: list[dict[str, Any]],
+    refreshed_appearances: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    if existing_dataset is None:
+        return refreshed_episodes, refreshed_appearances
+
+    refreshed_numbers = {episode["episode"] for episode in refreshed_episodes}
+    episodes = [
+        episode
+        for episode in existing_dataset["episodes"]
+        if episode["episode"] not in refreshed_numbers
+    ] + refreshed_episodes
+    appearances = [
+        appearance
+        for appearance in existing_dataset["appearances"]
+        if appearance["episode"] not in refreshed_numbers
+    ] + refreshed_appearances
+    episodes.sort(key=lambda item: item["episode"])
+    return episodes, appearances
+
+
+def download_candidates(
+    candidates: list[Candidate], corrections: dict[str, Any]
+) -> list[tuple[dict[str, Any], list[dict[str, Any]]]]:
+    parsed: list[tuple[dict[str, Any], list[dict[str, Any]]]] = []
+    with ThreadPoolExecutor(max_workers=min(8, len(candidates))) as executor:
+        futures = {
+            executor.submit(fetch, candidate.url): candidate for candidate in candidates
+        }
+        completed = 0
+        for future in as_completed(futures):
+            candidate = futures[future]
+            html = future.result()
+            parsed.append(parse_episode(candidate, html, corrections))
+            completed += 1
+            if completed % 50 == 0 or completed == len(candidates):
+                print(f"  已解析 {completed}/{len(candidates)} 回", flush=True)
+    return parsed
+
+
+def write_dataset(dataset: dict[str, Any]) -> None:
+    payload = json.dumps(dataset, ensure_ascii=False, indent=2) + "\n"
+    browser_payload = "window.TV_LIVE_DATA = " + json.dumps(
+        dataset, ensure_ascii=False, separators=(",", ":")
+    ) + ";\n"
+    atomic_write_text(DATA_PATH, payload)
+    atomic_write_text(WEB_DATA_PATH, browser_payload)
+
+
+def update(full: bool = False) -> dict[str, Any]:
+    corrections = load_corrections()
+    print("搜尋官方 TV LIVE 公告…", flush=True)
+    existing_dataset = None if full else load_existing_dataset()
+    if existing_dataset is None:
+        candidates = discover_candidates(corrections)
+        print(f"完整模式：下載 {len(candidates)} 回公告內容…", flush=True)
+    else:
+        existing_candidates = candidates_from_dataset(existing_dataset)
+        known_urls = {candidate.url for candidate in existing_candidates}
+        discovered_candidates = discover_candidates(corrections, known_urls)
+        candidates = select_incremental_candidates(
+            existing_candidates, discovered_candidates, refresh_count=2
+        )
+        new_count = sum(candidate.url not in known_urls for candidate in candidates)
+        refreshed = "、".join(str(candidate.episode) for candidate in candidates)
+        print(
+            f"增量模式：{new_count} 回新公告，"
+            f"下載/重掃回次 {refreshed}…",
+            flush=True,
+        )
+
+    parsed = download_candidates(candidates, corrections)
+    refreshed_episodes, refreshed_appearances = parsed_records(parsed)
+    episodes, appearances = merge_incremental_records(
+        existing_dataset, refreshed_episodes, refreshed_appearances
+    )
 
     validate_dataset(episodes, appearances)
     people = build_people(appearances, corrections)
@@ -791,9 +936,16 @@ def update() -> dict[str, Any]:
     return dataset
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="更新 BanG Dream! TV LIVE 統計資料")
+    parser.add_argument(
+        "--full",
+        action="store_true",
+        help="忽略既有資料，重新下載所有公告",
+    )
+    args = parser.parse_args(argv)
     try:
-        update()
+        update(full=args.full)
     except (UpdateError, requests.RequestException, json.JSONDecodeError) as exc:
         print(f"更新失敗：{exc}", file=sys.stderr)
         return 1

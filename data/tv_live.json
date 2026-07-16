@@ -1,14 +1,14 @@
 {
   "metadata": {
-    "generated_at": "2026-07-11T23:45:46+00:00",
+    "generated_at": "2026-07-16T21:59:15+00:00",
     "source": "https://bang-dream.com",
     "search_url": "https://bang-dream.com/news/?s=%E3%83%90%E3%83%B3%E3%83%89%E3%83%AA%EF%BC%81TV+LIVE",
     "series": "BanG Dream! TV LIVE 2020–",
     "timezone": "Asia/Tokyo",
-    "latest_episode": 323,
-    "episode_count": 323,
-    "appearance_count": 1116,
-    "people_count": 56
+    "latest_episode": 324,
+    "episode_count": 324,
+    "appearance_count": 1122,
+    "people_count": 59
   },
   "episodes": [
     {
@@ -3238,7 +3238,17 @@
       "news_date": "2026-07-09",
       "announcement_url": "https://bang-dream.com/news/2364/",
       "youtube_url": "https://youtube.com/live/sZUU_kL9_60",
-      "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/07/07110054/9be2d65b-c7631f56-5ad3646e-07c366b1.png",
+      "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/07/15182050/90082e7b-c7142785-a5561b32-0bb0ea57.png",
+      "correction_note": null
+    },
+    {
+      "episode": 324,
+      "title": "「バンドリ!TV LIVE 2026」第324回放送のお知らせ",
+      "broadcast_at": "2026-07-23T22:03:00+09:00",
+      "news_date": "2026-07-16",
+      "announcement_url": "https://bang-dream.com/news/2371/",
+      "youtube_url": "https://youtube.com/live/0AiUzvr5QFA",
+      "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/07/16220422/7e9b5085-b06816b7-e6906edb-cfaeba51.png",
       "correction_note": null
     }
   ],
@@ -18826,6 +18836,20 @@
       "person_id": "person_6919dad6908d"
     },
     {
+      "name": "青木陽菜",
+      "display_name": "青木陽菜",
+      "role": "要楽奈",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "青木陽菜(要楽奈 役)",
+      "episode": 323,
+      "broadcast_at": "2026-07-16T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2364/",
+      "id": "appearance_639bebc9e902",
+      "person_id": "person_bcf19e115289"
+    },
+    {
       "name": "小日向美香",
       "display_name": "小日向美香",
       "role": "長崎そよ",
@@ -18836,7 +18860,7 @@
       "episode": 323,
       "broadcast_at": "2026-07-16T22:03:00+09:00",
       "announcement_url": "https://bang-dream.com/news/2364/",
-      "id": "appearance_09f352e39bcf",
+      "id": "appearance_f25003d10a66",
       "person_id": "person_4b4abd5afd66"
     },
     {
@@ -18850,7 +18874,7 @@
       "episode": 323,
       "broadcast_at": "2026-07-16T22:03:00+09:00",
       "announcement_url": "https://bang-dream.com/news/2364/",
-      "id": "appearance_e17bd3d742b9",
+      "id": "appearance_2bcc680715aa",
       "person_id": "person_7a3d2a41e9e8"
     },
     {
@@ -18864,8 +18888,78 @@
       "episode": 323,
       "broadcast_at": "2026-07-16T22:03:00+09:00",
       "announcement_url": "https://bang-dream.com/news/2364/",
-      "id": "appearance_3656e645e9ee",
+      "id": "appearance_40dff95eb1d8",
       "person_id": "person_2b26af5e4294"
+    },
+    {
+      "name": "立石凛",
+      "display_name": "立石凛",
+      "role": "千早愛音",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "立石凛(千早愛音 役)",
+      "episode": 324,
+      "broadcast_at": "2026-07-23T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2371/",
+      "id": "appearance_0985a8df6ac2",
+      "person_id": "person_b0f467ddcc08"
+    },
+    {
+      "name": "仲町あられ",
+      "display_name": "仲町あられ",
+      "role": null,
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "仲町あられ",
+      "episode": 324,
+      "broadcast_at": "2026-07-23T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2371/",
+      "id": "appearance_460e65374e33",
+      "person_id": "person_7a3d2a41e9e8"
+    },
+    {
+      "name": "クレマチス",
+      "display_name": "クレマチス",
+      "role": null,
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "クレマチス",
+      "episode": 324,
+      "broadcast_at": "2026-07-23T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2371/",
+      "id": "appearance_f8c158e1f9ae",
+      "person_id": "person_0cd8d3439ed8"
+    },
+    {
+      "name": "丸岡和佳奈",
+      "display_name": "丸岡和佳奈",
+      "role": "ベル",
+      "description": null,
+      "appearance_type": "guest",
+      "status": "appeared",
+      "raw_listed_text": "丸岡和佳奈(ベル 役)",
+      "episode": 324,
+      "broadcast_at": "2026-07-23T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2371/",
+      "id": "appearance_7b248747eb76",
+      "person_id": "person_82b26ceb6d27"
+    },
+    {
+      "name": "塚田悠衣",
+      "display_name": "塚田悠衣",
+      "role": "ポポ",
+      "description": null,
+      "appearance_type": "guest",
+      "status": "appeared",
+      "raw_listed_text": "塚田悠衣(ポポ 役)",
+      "episode": 324,
+      "broadcast_at": "2026-07-23T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2371/",
+      "id": "appearance_8ffa68e75781",
+      "person_id": "person_3fbce895548c"
     }
   ],
   "people": [
@@ -18897,6 +18991,14 @@
       "roles": [
         "二葉つくし"
       ],
+      "descriptions": []
+    },
+    {
+      "id": "person_0cd8d3439ed8",
+      "name": "クレマチス",
+      "display_name": "クレマチス",
+      "kind": "other",
+      "roles": [],
       "descriptions": []
     },
     {
@@ -18944,6 +19046,16 @@
       "kind": "voice_actor",
       "roles": [
         "今井リサ"
+      ],
+      "descriptions": []
+    },
+    {
+      "id": "person_82b26ceb6d27",
+      "name": "丸岡和佳奈",
+      "display_name": "丸岡和佳奈",
+      "kind": "voice_actor",
+      "roles": [
+        "ベル"
       ],
       "descriptions": []
     },
@@ -19060,6 +19172,16 @@
       "kind": "voice_actor",
       "roles": [
         "北沢はぐみ"
+      ],
+      "descriptions": []
+    },
+    {
+      "id": "person_3fbce895548c",
+      "name": "塚田悠衣",
+      "display_name": "塚田悠衣",
+      "kind": "voice_actor",
+      "roles": [
+        "ポポ"
       ],
       "descriptions": []
     },
