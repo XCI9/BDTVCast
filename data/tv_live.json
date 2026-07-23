@@ -1,13 +1,13 @@
 {
   "metadata": {
-    "generated_at": "2026-07-22T20:06:01+00:00",
+    "generated_at": "2026-07-23T20:07:36+00:00",
     "source": "https://bang-dream.com",
     "search_url": "https://bang-dream.com/news/?s=%E3%83%90%E3%83%B3%E3%83%89%E3%83%AA%EF%BC%81TV+LIVE",
     "series": "BanG Dream! TV LIVE 2020–",
     "timezone": "Asia/Tokyo",
-    "latest_episode": 324,
-    "episode_count": 324,
-    "appearance_count": 1122,
+    "latest_episode": 325,
+    "episode_count": 325,
+    "appearance_count": 1126,
     "people_count": 59
   },
   "episodes": [
@@ -3249,6 +3249,16 @@
       "announcement_url": "https://bang-dream.com/news/2371/",
       "youtube_url": "https://youtube.com/live/0AiUzvr5QFA",
       "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/07/16220422/7e9b5085-b06816b7-e6906edb-cfaeba51.png",
+      "correction_note": null
+    },
+    {
+      "episode": 325,
+      "title": "「バンドリ!TV LIVE 2026」第325回放送のお知らせ",
+      "broadcast_at": "2026-07-30T22:03:00+09:00",
+      "news_date": "2026-07-23",
+      "announcement_url": "https://bang-dream.com/news/2372/",
+      "youtube_url": "https://youtube.com/live/pCDTak8bLOs",
+      "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/07/21193732/f2860b40-05b3aa0d-f8a51e7e-4b274a3d.png",
       "correction_note": null
     }
   ],
@@ -18960,6 +18970,62 @@
       "announcement_url": "https://bang-dream.com/news/2371/",
       "id": "appearance_8ffa68e75781",
       "person_id": "person_3fbce895548c"
+    },
+    {
+      "name": "佐々木李子",
+      "display_name": "佐々木李子",
+      "role": "ドロリス/三角初華",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "佐々木李子(ドロリス/三角初華 役)",
+      "episode": 325,
+      "broadcast_at": "2026-07-30T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2372/",
+      "id": "appearance_2cc6e79be72a",
+      "person_id": "person_66344195bb22"
+    },
+    {
+      "name": "高尾奏音",
+      "display_name": "高尾奏音",
+      "role": "オブリビオニス/豊川祥子",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "高尾奏音(オブリビオニス/豊川祥子 役)",
+      "episode": 325,
+      "broadcast_at": "2026-07-30T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2372/",
+      "id": "appearance_e286423b2670",
+      "person_id": "person_8995903ab81e"
+    },
+    {
+      "name": "仲町あられ",
+      "display_name": "仲町あられ",
+      "role": null,
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "仲町あられ",
+      "episode": 325,
+      "broadcast_at": "2026-07-30T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2372/",
+      "id": "appearance_fe5b8c0137f5",
+      "person_id": "person_7a3d2a41e9e8"
+    },
+    {
+      "name": "藤都子",
+      "display_name": "藤都子",
+      "role": null,
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "藤都子",
+      "episode": 325,
+      "broadcast_at": "2026-07-30T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2372/",
+      "id": "appearance_6143a2f0d80a",
+      "person_id": "person_e02a20578f1e"
     }
   ],
   "people": [
