@@ -1,14 +1,14 @@
 {
   "metadata": {
-    "generated_at": "2026-08-05T20:51:18+00:00",
+    "generated_at": "2026-08-07T00:35:49+00:00",
     "source": "https://bang-dream.com",
     "search_url": "https://bang-dream.com/news/?s=%E3%83%90%E3%83%B3%E3%83%89%E3%83%AA%EF%BC%81TV+LIVE",
     "series": "BanG Dream! TV LIVE 2020–",
     "timezone": "Asia/Tokyo",
-    "latest_episode": 326,
-    "episode_count": 326,
-    "appearance_count": 1132,
-    "people_count": 59
+    "latest_episode": 327,
+    "episode_count": 327,
+    "appearance_count": 1136,
+    "people_count": 61
   },
   "episodes": [
     {
@@ -3269,6 +3269,16 @@
       "announcement_url": "https://bang-dream.com/news/2375/",
       "youtube_url": "https://youtube.com/live/OSPJp4fwuMc",
       "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/07/30145118/13aa1438-f12a185e-21b7f28a-a5c9fd50.png",
+      "correction_note": null
+    },
+    {
+      "episode": 327,
+      "title": "「バンドリ!TV LIVE 2026」第327回放送のお知らせ",
+      "broadcast_at": "2026-08-13T22:03:00+09:00",
+      "news_date": "2026-08-06",
+      "announcement_url": "https://bang-dream.com/news/2377/",
+      "youtube_url": "https://youtube.com/live/TUtR6-c-WRU",
+      "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/08/04112641/44b75c8b-855437cb-2e819d0f-956304e9.png",
       "correction_note": null
     }
   ],
@@ -19120,6 +19130,62 @@
       "announcement_url": "https://bang-dream.com/news/2375/",
       "id": "appearance_5cddfef37e2f",
       "person_id": "person_6919dad6908d"
+    },
+    {
+      "name": "宮永ののか",
+      "display_name": "宮永ののか",
+      "role": null,
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "宮永ののか",
+      "episode": 327,
+      "broadcast_at": "2026-08-13T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2377/",
+      "id": "appearance_a07392f03630",
+      "person_id": "person_38743ce74e28"
+    },
+    {
+      "name": "藤都子",
+      "display_name": "藤都子",
+      "role": null,
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "藤都子",
+      "episode": 327,
+      "broadcast_at": "2026-08-13T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2377/",
+      "id": "appearance_735fbb1a9c55",
+      "person_id": "person_e02a20578f1e"
+    },
+    {
+      "name": "花宮初奈",
+      "display_name": "花宮初奈",
+      "role": "矢倉蓬咲",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "花宮初奈(矢倉蓬咲 役)",
+      "episode": 327,
+      "broadcast_at": "2026-08-13T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2377/",
+      "id": "appearance_abf0badb6227",
+      "person_id": "person_41d49cb5fb07"
+    },
+    {
+      "name": "遠野ひかる",
+      "display_name": "遠野ひかる",
+      "role": "四宮寧月",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "遠野ひかる(四宮寧月 役)",
+      "episode": 327,
+      "broadcast_at": "2026-08-13T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2377/",
+      "id": "appearance_faec4f08e9ed",
+      "person_id": "person_91181d70a209"
     }
   ],
   "people": [
@@ -19615,6 +19681,16 @@
       "descriptions": []
     },
     {
+      "id": "person_41d49cb5fb07",
+      "name": "花宮初奈",
+      "display_name": "花宮初奈",
+      "kind": "voice_actor",
+      "roles": [
+        "矢倉蓬咲"
+      ],
+      "descriptions": []
+    },
+    {
       "id": "person_e02a20578f1e",
       "name": "藤都子",
       "display_name": "藤都子",
@@ -19660,6 +19736,16 @@
       "roles": [
         "倉田ましろ",
         "湊友希那"
+      ],
+      "descriptions": []
+    },
+    {
+      "id": "person_91181d70a209",
+      "name": "遠野ひかる",
+      "display_name": "遠野ひかる",
+      "kind": "voice_actor",
+      "roles": [
+        "四宮寧月"
       ],
       "descriptions": []
     },
