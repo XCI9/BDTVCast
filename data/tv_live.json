@@ -1,13 +1,13 @@
 {
   "metadata": {
-    "generated_at": "2026-09-16T21:47:18+00:00",
+    "generated_at": "2026-09-17T21:49:54+00:00",
     "source": "https://bang-dream.com",
     "search_url": "https://bang-dream.com/news/?s=%E3%83%90%E3%83%B3%E3%83%89%E3%83%AA%EF%BC%81TV+LIVE",
     "series": "BanG Dream! TV LIVE 2020–",
     "timezone": "Asia/Tokyo",
-    "latest_episode": 332,
-    "episode_count": 332,
-    "appearance_count": 1160,
+    "latest_episode": 333,
+    "episode_count": 333,
+    "appearance_count": 1165,
     "people_count": 63
   },
   "episodes": [
@@ -3329,6 +3329,16 @@
       "announcement_url": "https://bang-dream.com/news/2401/",
       "youtube_url": "https://youtube.com/live/GcpMVU3d84M",
       "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/09/09195721/9e529cf0-985f4cf8-7be086bd-c88d6ba9.png",
+      "correction_note": null
+    },
+    {
+      "episode": 333,
+      "title": "「バンドリ!TV LIVE 2026」第333回放送のお知らせ",
+      "broadcast_at": "2026-09-24T22:03:00+09:00",
+      "news_date": "2026-09-17",
+      "announcement_url": "https://bang-dream.com/news/2413/",
+      "youtube_url": "https://youtube.com/live/CvajtQ_yXf0",
+      "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/09/17154350/4b08593e-ec68b067-e6a01790-719afb2d.png",
       "correction_note": null
     }
   ],
@@ -19572,6 +19582,76 @@
       "announcement_url": "https://bang-dream.com/news/2401/",
       "id": "appearance_480f946f3d2a",
       "person_id": "person_2b26af5e4294"
+    },
+    {
+      "name": "直田姫奈",
+      "display_name": "直田姫奈",
+      "role": "桐ヶ谷透子",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "直田姫奈(桐ヶ谷透子 役)",
+      "episode": 333,
+      "broadcast_at": "2026-09-24T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2413/",
+      "id": "appearance_daee8f9b86a9",
+      "person_id": "person_c23c2be373db"
+    },
+    {
+      "name": "mika",
+      "display_name": "mika",
+      "role": "二葉つくし",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "mika(二葉つくし 役)",
+      "episode": 333,
+      "broadcast_at": "2026-09-24T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2413/",
+      "id": "appearance_0ed9b1d61ded",
+      "person_id": "person_8f80b44968ea"
+    },
+    {
+      "name": "Ayasa",
+      "display_name": "Ayasa",
+      "role": "八潮瑠唯",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "Ayasa(八潮瑠唯 役)",
+      "episode": 333,
+      "broadcast_at": "2026-09-24T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2413/",
+      "id": "appearance_4da64a5ad7a2",
+      "person_id": "person_c39e2fa496d3"
+    },
+    {
+      "name": "林鼓子",
+      "display_name": "林鼓子",
+      "role": "椎名立希",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "林鼓子(椎名立希 役)",
+      "episode": 333,
+      "broadcast_at": "2026-09-24T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2413/",
+      "id": "appearance_6f12b1b0e4cb",
+      "person_id": "person_b6017df4b451"
+    },
+    {
+      "name": "岡田夢以",
+      "display_name": "岡田夢以",
+      "role": "ティモリス/八幡海鈴",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "岡田夢以(ティモリス/八幡海鈴 役)",
+      "episode": 333,
+      "broadcast_at": "2026-09-24T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2413/",
+      "id": "appearance_e9bec07f19b4",
+      "person_id": "person_cc1e9c078ac5"
     }
   ],
   "people": [
