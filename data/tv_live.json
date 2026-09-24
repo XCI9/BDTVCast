@@ -1,14 +1,14 @@
 {
   "metadata": {
-    "generated_at": "2026-09-23T21:53:08+00:00",
+    "generated_at": "2026-09-24T21:53:06+00:00",
     "source": "https://bang-dream.com",
     "search_url": "https://bang-dream.com/news/?s=%E3%83%90%E3%83%B3%E3%83%89%E3%83%AA%EF%BC%81TV+LIVE",
     "series": "BanG Dream! TV LIVE 2020–",
     "timezone": "Asia/Tokyo",
-    "latest_episode": 333,
-    "episode_count": 333,
-    "appearance_count": 1165,
-    "people_count": 63
+    "latest_episode": 334,
+    "episode_count": 334,
+    "appearance_count": 1167,
+    "people_count": 64
   },
   "episodes": [
     {
@@ -3339,6 +3339,16 @@
       "announcement_url": "https://bang-dream.com/news/2413/",
       "youtube_url": "https://youtube.com/live/CvajtQ_yXf0",
       "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/09/17154350/4b08593e-ec68b067-e6a01790-719afb2d.png",
+      "correction_note": null
+    },
+    {
+      "episode": 334,
+      "title": "「バンドリ!TV LIVE 2026」第334回放送のお知らせ",
+      "broadcast_at": "2026-10-01T22:03:00+09:00",
+      "news_date": "2026-09-24",
+      "announcement_url": "https://bang-dream.com/news/2421/",
+      "youtube_url": "https://youtube.com/live/iTv74Fwzp1E",
+      "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/09/24175158/b93f17e5-b3255705-73d6880f-f02129ed.png",
       "correction_note": null
     }
   ],
@@ -19652,6 +19662,34 @@
       "announcement_url": "https://bang-dream.com/news/2413/",
       "id": "appearance_e9bec07f19b4",
       "person_id": "person_cc1e9c078ac5"
+    },
+    {
+      "name": "豊田萌絵",
+      "display_name": "豊田萌絵",
+      "role": "松原花音",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "豊田萌絵(松原花音 役)",
+      "episode": 334,
+      "broadcast_at": "2026-10-01T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2421/",
+      "id": "appearance_3409d5d4cf9a",
+      "person_id": "person_b6e1adfc6314"
+    },
+    {
+      "name": "涼泉桜花",
+      "display_name": "涼泉桜花",
+      "role": "馬橋心玖",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "涼泉桜花(馬橋心玖 役)",
+      "episode": 334,
+      "broadcast_at": "2026-10-01T22:03:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2421/",
+      "id": "appearance_57caf866cc2d",
+      "person_id": "person_8d551163857d"
     }
   ],
   "people": [
@@ -20063,6 +20101,16 @@
       "kind": "voice_actor",
       "roles": [
         "月島まりな"
+      ],
+      "descriptions": []
+    },
+    {
+      "id": "person_8d551163857d",
+      "name": "涼泉桜花",
+      "display_name": "涼泉桜花",
+      "kind": "voice_actor",
+      "roles": [
+        "馬橋心玖"
       ],
       "descriptions": []
     },
