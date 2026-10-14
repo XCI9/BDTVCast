@@ -1,13 +1,13 @@
 {
   "metadata": {
-    "generated_at": "2026-10-13T23:09:07+00:00",
+    "generated_at": "2026-10-14T21:58:50+00:00",
     "source": "https://bang-dream.com",
     "search_url": "https://bang-dream.com/news/?s=%E3%83%90%E3%83%B3%E3%83%89%E3%83%AA%EF%BC%81TV+LIVE",
     "series": "BanG Dream! TV LIVE 2020–",
     "timezone": "Asia/Tokyo",
-    "latest_episode": 335,
-    "episode_count": 335,
-    "appearance_count": 1171,
+    "latest_episode": 336,
+    "episode_count": 336,
+    "appearance_count": 1175,
     "people_count": 65
   },
   "episodes": [
@@ -3359,6 +3359,16 @@
       "announcement_url": "https://bang-dream.com/news/2430/",
       "youtube_url": "https://youtube.com/live/IN5AqR1WQt0",
       "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/09/30195238/57aced59-00a99925-591d2dae-5f429493.png",
+      "correction_note": null
+    },
+    {
+      "episode": 336,
+      "title": "「バンドリ!TV LIVE 2026」 第336回放送のお知らせ",
+      "broadcast_at": "2026-10-15T22:00:00+09:00",
+      "news_date": "2026-10-08",
+      "announcement_url": "https://bang-dream.com/news/2435/",
+      "youtube_url": "https://youtube.com/live/YUB5qGbmzHs",
+      "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/10/07204622/4218e5ef-13e86267-2abedc9c-0f6db54c.png",
       "correction_note": null
     }
   ],
@@ -19756,6 +19766,62 @@
       "announcement_url": "https://bang-dream.com/news/2430/",
       "id": "appearance_e9aed5427b4b",
       "person_id": "person_38743ce74e28"
+    },
+    {
+      "name": "愛美",
+      "display_name": "愛美",
+      "role": "戸山香澄",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "愛美(戸山香澄 役)",
+      "episode": 336,
+      "broadcast_at": "2026-10-15T22:00:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2435/",
+      "id": "appearance_4ff9bd0c3844",
+      "person_id": "person_597aba803f5d"
+    },
+    {
+      "name": "Raychell",
+      "display_name": "Raychell",
+      "role": "レイヤ",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "Raychell(レイヤ 役)",
+      "episode": 336,
+      "broadcast_at": "2026-10-15T22:00:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2435/",
+      "id": "appearance_45a98ed2a3f7",
+      "person_id": "person_dfbd4bd935b6"
+    },
+    {
+      "name": "高尾奏音",
+      "display_name": "高尾奏音",
+      "role": "オブリビオニス/豊川祥子",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "高尾奏音(オブリビオニス/豊川祥子 役)",
+      "episode": 336,
+      "broadcast_at": "2026-10-15T22:00:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2435/",
+      "id": "appearance_6bacefcda7b6",
+      "person_id": "person_8995903ab81e"
+    },
+    {
+      "name": "仲町あられ",
+      "display_name": "仲町あられ",
+      "role": null,
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "仲町あられ",
+      "episode": 336,
+      "broadcast_at": "2026-10-15T22:00:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2435/",
+      "id": "appearance_9a1928ccf2fc",
+      "person_id": "person_7a3d2a41e9e8"
     }
   ],
   "people": [
