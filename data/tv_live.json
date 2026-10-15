@@ -1,13 +1,13 @@
 {
   "metadata": {
-    "generated_at": "2026-10-14T21:58:50+00:00",
+    "generated_at": "2026-10-15T21:51:55+00:00",
     "source": "https://bang-dream.com",
     "search_url": "https://bang-dream.com/news/?s=%E3%83%90%E3%83%B3%E3%83%89%E3%83%AA%EF%BC%81TV+LIVE",
     "series": "BanG Dream! TV LIVE 2020–",
     "timezone": "Asia/Tokyo",
-    "latest_episode": 336,
-    "episode_count": 336,
-    "appearance_count": 1175,
+    "latest_episode": 337,
+    "episode_count": 337,
+    "appearance_count": 1177,
     "people_count": 65
   },
   "episodes": [
@@ -3369,6 +3369,16 @@
       "announcement_url": "https://bang-dream.com/news/2435/",
       "youtube_url": "https://youtube.com/live/YUB5qGbmzHs",
       "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/10/07204622/4218e5ef-13e86267-2abedc9c-0f6db54c.png",
+      "correction_note": null
+    },
+    {
+      "episode": 337,
+      "title": "「バンドリ!TV LIVE 2026」第337回放送のお知らせ",
+      "broadcast_at": "2026-10-22T22:00:00+09:00",
+      "news_date": "2026-10-15",
+      "announcement_url": "https://bang-dream.com/news/2439/",
+      "youtube_url": "https://youtube.com/live/zjkpWq_pa0s",
+      "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/10/14203107/dd46ac34-0b8e3d6f-e1e190ba-08f11fd4.png",
       "correction_note": null
     }
   ],
@@ -19822,6 +19832,34 @@
       "announcement_url": "https://bang-dream.com/news/2435/",
       "id": "appearance_9a1928ccf2fc",
       "person_id": "person_7a3d2a41e9e8"
+    },
+    {
+      "name": "佐々木李子",
+      "display_name": "佐々木李子",
+      "role": "ドロリス/三角初華",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "佐々木李子(ドロリス/三角初華 役)",
+      "episode": 337,
+      "broadcast_at": "2026-10-22T22:00:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2439/",
+      "id": "appearance_fb3404a0af8b",
+      "person_id": "person_66344195bb22"
+    },
+    {
+      "name": "岡田夢以",
+      "display_name": "岡田夢以",
+      "role": "ティモリス/八幡海鈴",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "岡田夢以(ティモリス/八幡海鈴 役)",
+      "episode": 337,
+      "broadcast_at": "2026-10-22T22:00:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2439/",
+      "id": "appearance_492b455ad41e",
+      "person_id": "person_cc1e9c078ac5"
     }
   ],
   "people": [
