@@ -1,13 +1,13 @@
 {
   "metadata": {
-    "generated_at": "2026-10-20T21:59:06+00:00",
+    "generated_at": "2026-10-23T21:44:48+00:00",
     "source": "https://bang-dream.com",
     "search_url": "https://bang-dream.com/news/?s=%E3%83%90%E3%83%B3%E3%83%89%E3%83%AA%EF%BC%81TV+LIVE",
     "series": "BanG Dream! TV LIVE 2020–",
     "timezone": "Asia/Tokyo",
-    "latest_episode": 337,
-    "episode_count": 337,
-    "appearance_count": 1177,
+    "latest_episode": 338,
+    "episode_count": 338,
+    "appearance_count": 1181,
     "people_count": 65
   },
   "episodes": [
@@ -3379,6 +3379,16 @@
       "announcement_url": "https://bang-dream.com/news/2439/",
       "youtube_url": "https://youtube.com/live/zjkpWq_pa0s",
       "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/10/14203107/dd46ac34-0b8e3d6f-e1e190ba-08f11fd4.png",
+      "correction_note": null
+    },
+    {
+      "episode": 338,
+      "title": "「バンドリ!TV LIVE 2026」第338回放送のお知らせ",
+      "broadcast_at": "2026-10-29T21:30:00+09:00",
+      "news_date": "2026-10-22",
+      "announcement_url": "https://bang-dream.com/news/2443/",
+      "youtube_url": "https://youtube.com/live/euixQCD3Llg",
+      "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/10/21214842/0c758431-472c342c-c4666170-df9d3d09.png",
       "correction_note": null
     }
   ],
@@ -19860,6 +19870,62 @@
       "announcement_url": "https://bang-dream.com/news/2439/",
       "id": "appearance_492b455ad41e",
       "person_id": "person_cc1e9c078ac5"
+    },
+    {
+      "name": "工藤晴香",
+      "display_name": "工藤晴香",
+      "role": "氷川紗夜",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "工藤晴香(氷川紗夜 役)",
+      "episode": 338,
+      "broadcast_at": "2026-10-29T21:30:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2443/",
+      "id": "appearance_dbc95ccfc8cf",
+      "person_id": "person_1d0491679b61"
+    },
+    {
+      "name": "櫻川めぐ",
+      "display_name": "櫻川めぐ",
+      "role": "宇田川あこ",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "櫻川めぐ(宇田川あこ 役)",
+      "episode": 338,
+      "broadcast_at": "2026-10-29T21:30:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2443/",
+      "id": "appearance_9ef9f8c2d7b1",
+      "person_id": "person_44bb4e746275"
+    },
+    {
+      "name": "佐々木李子",
+      "display_name": "佐々木李子",
+      "role": "ドロリス/三角初華",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "佐々木李子(ドロリス/三角初華 役)",
+      "episode": 338,
+      "broadcast_at": "2026-10-29T21:30:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2443/",
+      "id": "appearance_546baf9f9d93",
+      "person_id": "person_66344195bb22"
+    },
+    {
+      "name": "渡瀬結月",
+      "display_name": "渡瀬結月",
+      "role": "モーティス/若葉睦",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "渡瀬結月(モーティス/若葉睦 役)",
+      "episode": 338,
+      "broadcast_at": "2026-10-29T21:30:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2443/",
+      "id": "appearance_f0e76e642186",
+      "person_id": "person_ae22765bab10"
     }
   ],
   "people": [
