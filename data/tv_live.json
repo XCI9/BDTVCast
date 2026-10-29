@@ -1,13 +1,13 @@
 {
   "metadata": {
-    "generated_at": "2026-10-28T22:54:47+00:00",
+    "generated_at": "2026-10-29T23:02:20+00:00",
     "source": "https://bang-dream.com",
     "search_url": "https://bang-dream.com/news/?s=%E3%83%90%E3%83%B3%E3%83%89%E3%83%AA%EF%BC%81TV+LIVE",
     "series": "BanG Dream! TV LIVE 2020–",
     "timezone": "Asia/Tokyo",
-    "latest_episode": 338,
-    "episode_count": 338,
-    "appearance_count": 1181,
+    "latest_episode": 339,
+    "episode_count": 339,
+    "appearance_count": 1185,
     "people_count": 65
   },
   "episodes": [
@@ -3389,6 +3389,16 @@
       "announcement_url": "https://bang-dream.com/news/2443/",
       "youtube_url": "https://youtube.com/live/euixQCD3Llg",
       "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/10/21214842/0c758431-472c342c-c4666170-df9d3d09.png",
+      "correction_note": null
+    },
+    {
+      "episode": 339,
+      "title": "「バンドリ!TV LIVE 2026」第339回放送のお知らせ",
+      "broadcast_at": "2026-11-05T22:00:00+09:00",
+      "news_date": "2026-10-29",
+      "announcement_url": "https://bang-dream.com/news/2451/",
+      "youtube_url": "https://youtube.com/live/b44WoK4ZjDg",
+      "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/10/29203505/57979e89-d0be1edc-12dc55a7-6c3cefd1.png",
       "correction_note": null
     }
   ],
@@ -19926,6 +19936,62 @@
       "announcement_url": "https://bang-dream.com/news/2443/",
       "id": "appearance_f0e76e642186",
       "person_id": "person_ae22765bab10"
+    },
+    {
+      "name": "Raychell",
+      "display_name": "Raychell",
+      "role": "レイヤ",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "Raychell(レイヤ 役)",
+      "episode": 339,
+      "broadcast_at": "2026-11-05T22:00:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2451/",
+      "id": "appearance_af03055b8227",
+      "person_id": "person_dfbd4bd935b6"
+    },
+    {
+      "name": "紡木吏佐",
+      "display_name": "紡木吏佐",
+      "role": "チュチュ",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "紡木吏佐(チュチュ 役)",
+      "episode": 339,
+      "broadcast_at": "2026-11-05T22:00:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2451/",
+      "id": "appearance_34b365eb6030",
+      "person_id": "person_05ad75753e72"
+    },
+    {
+      "name": "立石凛",
+      "display_name": "立石凛",
+      "role": "千早愛音",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "立石凛(千早愛音 役)",
+      "episode": 339,
+      "broadcast_at": "2026-11-05T22:00:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2451/",
+      "id": "appearance_05cb0c22c4eb",
+      "person_id": "person_b0f467ddcc08"
+    },
+    {
+      "name": "仲町あられ",
+      "display_name": "仲町あられ",
+      "role": null,
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "仲町あられ",
+      "episode": 339,
+      "broadcast_at": "2026-11-05T22:00:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2451/",
+      "id": "appearance_c84e7406ac5e",
+      "person_id": "person_7a3d2a41e9e8"
     }
   ],
   "people": [
