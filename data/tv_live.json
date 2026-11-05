@@ -1,13 +1,13 @@
 {
   "metadata": {
-    "generated_at": "2026-11-05T00:01:56+00:00",
+    "generated_at": "2026-11-05T23:52:56+00:00",
     "source": "https://bang-dream.com",
     "search_url": "https://bang-dream.com/news/?s=%E3%83%90%E3%83%B3%E3%83%89%E3%83%AA%EF%BC%81TV+LIVE",
     "series": "BanG Dream! TV LIVE 2020–",
     "timezone": "Asia/Tokyo",
-    "latest_episode": 339,
-    "episode_count": 339,
-    "appearance_count": 1185,
+    "latest_episode": 340,
+    "episode_count": 340,
+    "appearance_count": 1189,
     "people_count": 65
   },
   "episodes": [
@@ -3399,6 +3399,16 @@
       "announcement_url": "https://bang-dream.com/news/2451/",
       "youtube_url": "https://youtube.com/live/b44WoK4ZjDg",
       "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/10/29203505/57979e89-d0be1edc-12dc55a7-6c3cefd1.png",
+      "correction_note": null
+    },
+    {
+      "episode": 340,
+      "title": "「バンドリ!TV LIVE 2026」第340回放送のお知らせ",
+      "broadcast_at": "2026-11-12T22:00:00+09:00",
+      "news_date": "2026-11-05",
+      "announcement_url": "https://bang-dream.com/news/2454/",
+      "youtube_url": "https://youtube.com/live/ZeuxTIgLM_M",
+      "image_url": "https://bang-dream.com/wordpress/wp-content/uploads/2026/11/04202527/2a646d5a-d592ac30-9f81ad21-a9f8869c.png",
       "correction_note": null
     }
   ],
@@ -19992,6 +20002,62 @@
       "announcement_url": "https://bang-dream.com/news/2451/",
       "id": "appearance_c84e7406ac5e",
       "person_id": "person_7a3d2a41e9e8"
+    },
+    {
+      "name": "大塚紗英",
+      "display_name": "大塚紗英",
+      "role": "花園たえ",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "大塚紗英(花園たえ 役)",
+      "episode": 340,
+      "broadcast_at": "2026-11-12T22:00:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2454/",
+      "id": "appearance_c234713efc16",
+      "person_id": "person_b202593414b4"
+    },
+    {
+      "name": "櫻川めぐ",
+      "display_name": "櫻川めぐ",
+      "role": "宇田川あこ",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "櫻川めぐ(宇田川あこ 役)",
+      "episode": 340,
+      "broadcast_at": "2026-11-12T22:00:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2454/",
+      "id": "appearance_c7fcf3e5f96e",
+      "person_id": "person_44bb4e746275"
+    },
+    {
+      "name": "志崎樺音",
+      "display_name": "志崎樺音",
+      "role": "白金燐子",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "志崎樺音(白金燐子 役)",
+      "episode": 340,
+      "broadcast_at": "2026-11-12T22:00:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2454/",
+      "id": "appearance_d00482aa240f",
+      "person_id": "person_a9939b3afb74"
+    },
+    {
+      "name": "立石凛",
+      "display_name": "立石凛",
+      "role": "千早愛音",
+      "description": null,
+      "appearance_type": "regular",
+      "status": "appeared",
+      "raw_listed_text": "立石凛(千早愛音 役)",
+      "episode": 340,
+      "broadcast_at": "2026-11-12T22:00:00+09:00",
+      "announcement_url": "https://bang-dream.com/news/2454/",
+      "id": "appearance_d807a94fdf38",
+      "person_id": "person_b0f467ddcc08"
     }
   ],
   "people": [
